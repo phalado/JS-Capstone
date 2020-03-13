@@ -4,7 +4,13 @@
   "description": "Capstone project in the JavaScript course in Microverse",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "jest-watch": "jest --watch",
+    "jest-init": "jest --init",
+    "install-web": "npm install --save-dev webpack",
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "npx-fix": "npx eslint src/  --fix"
   },
   "repository": {
     "type": "git",
@@ -16,5 +22,15 @@
   "bugs": {
     "url": "https://github.com/phalado/JS-Capstone/issues"
   },
-  "homepage": "https://github.com/phalado/JS-Capstone#readme"
+  "homepage": "https://github.com/phalado/JS-Capstone#readme",
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.1",
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11"
+  },
+  "dependencies": {
+    "phaser": "^3.22.0"
+  }
 }
