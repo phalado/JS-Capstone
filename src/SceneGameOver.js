@@ -8,22 +8,26 @@ class SceneGameOver extends Phaser.Scene {
 
   preload() {
     this.load.audio('gameOver', 'content/swImperialMarch.mp3');
+    this.load.image('vader', 'content/vaderGameOver.jpg');
+    this.load.image('goTitle', 'content/titleGameOver.png');
   }
 
   create() {
-    this.title = this.add.text(this.game.config.width * 0.5, 128, 'GAME OVER', {
-      fontFamily: 'monospace',
-      fontSize: 48,
-      fontStyle: 'bold',
-      color: '#fff',
-      align: 'center',
-    });
+    this.goTitle = this.add.image(
+      this.game.config.width * 0.5,
+      this.game.config.height * 0.15,
+      'goTitle',
+    );
 
-    this.title.setOrigin(0.5);
+    this.goImage = this.add.image(
+      this.game.config.width * 0.5,
+      this.game.config.height * 0.5,
+      'vader',
+    );
 
     this.sfx = {
-      btnOver: this.sound.add('sndBtnOver'),
-      btnDown: this.sound.add('sndBtnDown'),
+      btnOver: this.sound.add('sndBtnOver', { volume: 0.1 }),
+      btnDown: this.sound.add('sndBtnDown', { volume: 0.1 }),
     };
 
     this.song = this.sound.add('gameOver', { volume: 0.1 });
@@ -31,27 +35,27 @@ class SceneGameOver extends Phaser.Scene {
 
     this.btnRestart = this.add.sprite(
       this.game.config.width * 0.5,
-      this.game.config.height * 0.5,
+      this.game.config.height * 0.85,
       'sprBtnRestart',
     );
 
     this.btnRestart.setInteractive();
 
-    this.btnRestart.on('pointerover', function () {
+    this.btnRestart.on('pointerover', () => {
       this.btnRestart.setTexture('sprBtnRestartHover');
       this.sfx.btnOver.play();
     }, this);
 
-    this.btnRestart.on('pointerout', function () {
-      this.setTexture('sprBtnRestart');
+    this.btnRestart.on('pointerout', () => {
+      this.btnRestart.setTexture('sprBtnRestart');
     });
 
-    this.btnRestart.on('pointerdown', function () {
+    this.btnRestart.on('pointerdown', () => {
       this.btnRestart.setTexture('sprBtnRestartDown');
       this.sfx.btnDown.play();
     }, this);
 
-    this.btnRestart.on('pointerup', function () {
+    this.btnRestart.on('pointerup', () => {
       this.btnRestart.setTexture('sprBtnRestart');
       this.song.stop();
       this.scene.start('SceneMain');

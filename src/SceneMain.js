@@ -13,6 +13,7 @@ class SceneMain extends Phaser.Scene {
   preload() {
     this.load.image('sprBg0', 'content/sprBg0.png');
     this.load.image('sprBg1', 'content/sprBg1.png');
+    this.load.image('deathStar', 'content/deathStar.png');
     this.load.spritesheet('sprExplosion', 'content/sprExplosion.png', {
       frameWidth: 32,
       frameHeight: 32,
@@ -88,6 +89,12 @@ class SceneMain extends Phaser.Scene {
       const bg = new ScrollingBackground(this, 'sprBg0', i * 10);
       this.backgrounds.push(bg);
     }
+
+    this.deathStar = this.add.image(
+      this.game.config.width * 0.75,
+      this.game.config.height * 0.25,
+      'deathStar',
+    );
 
     this.player = new Player(
       this,
