@@ -34,8 +34,9 @@ class TieFighter extends Entity {
 
   updateHealth() {
     if (this.getData('health') > 0) {
-      this.scene.sfx.useForce.play();
+      this.scene.sfx.explosions[1].play();
       this.setData('health', this.getData('health') - 1);
+      this.body.velocity.y = Phaser.Math.Between(50, 100);
       return false;
     }
 

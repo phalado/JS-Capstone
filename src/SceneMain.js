@@ -139,12 +139,12 @@ class SceneMain extends Phaser.Scene {
     this.physics.add.collider(this.playerLasers, this.enemies, (playerLaser, enemy) => {
       if (enemy) {
         if (enemy.onDestroy !== undefined) {
-          if (!enemy.updateHealth()) {
+          if (enemy.updateHealth()) {
             enemy.onDestroy();
           }
         }
 
-        if (!enemy.updateHealth()) {
+        if (enemy.updateHealth()) {
           enemy.explode(true);
         }
         playerLaser.destroy();
@@ -171,10 +171,18 @@ class SceneMain extends Phaser.Scene {
           && !enemy.getData('isDead')) {
         if (player.updateHealth()) {
           player.explode(false);
+
+          if (enemy.onDestroy !== undefined) {
+            enemy.onDestroy();
+          }
           enemy.destroy();
+
           this.song.stop();
           player.onDestroy();
         } else {
+          if (enemy.onDestroy !== undefined) {
+            enemy.onDestroy();
+          }
           enemy.destroy();
           this.updateHPBar(this.player);
         }

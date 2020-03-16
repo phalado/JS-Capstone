@@ -64,6 +64,8 @@ class SceneMainMenu extends Phaser.Scene {
       'gameTitle',
     );
 
+    this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+
     this.backgrounds = [];
     for (let i = 0; i < 5; i += 1) {
       const keys = ['sprBg0', 'sprBg1'];
@@ -79,6 +81,11 @@ class SceneMainMenu extends Phaser.Scene {
   update() {
     for (let i = 0; i < this.backgrounds.length; i += 1) {
       this.backgrounds[i].update();
+    }
+
+    if (this.keySpace.isDown) {
+      this.song.stop();
+      this.scene.start('SceneMain');
     }
   }
 }
