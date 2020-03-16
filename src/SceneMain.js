@@ -1,9 +1,9 @@
 import Phaser from './phaser';
 import Player from './entityPlayer';
 import ScrollingBackground from './entityScrollingBackground';
-import CarrierShip from './entityCarrierShip';
-import GunShip from './entityGunShip';
-import ChaserShip from './entityChaserShip';
+import ImperialShutle from './entityImperialShutle';
+import TieFighter from './entityTieFighter';
+import Bomb from './entityBomb';
 
 class SceneMain extends Phaser.Scene {
   constructor() {
@@ -19,14 +19,14 @@ class SceneMain extends Phaser.Scene {
       frameHeight: 32,
     });
 
-    this.load.spritesheet('sprEnemy0', 'content/tieFighterp.png', {
+    this.load.spritesheet('tieFighter', 'content/tieFighterp.png', {
       frameWidth: 16,
       frameHeight: 16,
     });
 
-    this.load.image('sprEnemy1', 'content/sprEnemy1.png');
+    this.load.image('bomb', 'content/sprEnemy1.png');
 
-    this.load.spritesheet('sprEnemy2', 'content/imperialShutle.png', {
+    this.load.spritesheet('imperialShutle', 'content/imperialShutle.png', {
       frameWidth: 32,
       frameHeight: 26,
     });
@@ -42,19 +42,21 @@ class SceneMain extends Phaser.Scene {
     this.load.audio('sndExplode1', 'content/sndExplode1.wav');
     this.load.audio('sndLaser', 'content/blaster-firing.wav');
     this.load.audio('battleTheme', 'content/swBattleTheme.mp3');
+    this.load.audio('r2d2Scream', 'content/r2d2-scream.mp3');
+    this.load.audio('useForce', 'content/swUseForce.wav');
   }
 
   create() {
     this.anims.create({
-      key: 'sprEnemy0',
-      frames: this.anims.generateFrameNumbers('sprEnemy0'),
+      key: 'tieFighter',
+      frames: this.anims.generateFrameNumbers('tieFighter'),
       frameRate: 20,
       repeat: -1,
     });
 
     this.anims.create({
-      key: 'sprEnemy2',
-      frames: this.anims.generateFrameNumbers('sprEnemy2'),
+      key: 'imperialShutle',
+      frames: this.anims.generateFrameNumbers('imperialShutle'),
       frameRate: 20,
       repeat: -1,
     });
@@ -79,7 +81,10 @@ class SceneMain extends Phaser.Scene {
         this.sound.add('sndExplode1', { volume: 0.1 }),
       ],
       laser: this.sound.add('sndLaser', { volume: 0.1 }),
+      r2d2Scream: this.sound.add('r2d2Scream', { volume: 0.1 }),
+      useForce: this.sound.add('useForce', { volume: 0.3 }),
     };
+
 
     this.song = this.sound.add('battleTheme', { volume: 0.1 });
     this.song.play();
@@ -127,20 +132,42 @@ class SceneMain extends Phaser.Scene {
     this.physics.add.collider(this.player, this.enemyLasers, (player, laser) => {
       if (!player.getData('isDead')
           && !laser.getData('isDead')) {
-        player.explode(false);
-        laser.destroy();
-        this.song.stop();
-        player.onDestroy();
+        if (player.getData('health') > 1) {
+          player.setData('health', player.getData('health') - 1);
+          this.sfx.r2d2Scream.play();
+          laser.destroy();
+          console.log(player.getData('health'));
+        } else if (player.getData('health') === 1) {
+          this.sfx.useForce.play();
+          laser.destroy();
+          player.setData('health', player.getData('health') - 1);
+        } else {
+          player.explode(false);
+          laser.destroy();
+          this.song.stop();
+          player.onDestroy();
+        }
       }
     });
 
     this.physics.add.collider(this.player, this.enemies, (player, enemy) => {
       if (!player.getData('isDead')
           && !enemy.getData('isDead')) {
-        player.explode(false);
-        enemy.destroy();
-        this.song.stop();
-        player.onDestroy();
+        if (player.getData('health') > 1) {
+          player.setData('health', player.getData('health') - 1);
+          this.sfx.r2d2Scream.play();
+          enemy.destroy();
+          console.log(player.getData('health'));
+        } else if (player.getData('health') === 1) {
+          this.sfx.useForce.play();
+          enemy.destroy();
+          player.setData('health', player.getData('health') - 1);
+        } else {
+          player.explode(false);
+          enemy.destroy();
+          this.song.stop();
+          player.onDestroy();
+        }
       }
     });
 
@@ -150,21 +177,21 @@ class SceneMain extends Phaser.Scene {
         let enemy = null;
 
         if (Phaser.Math.Between(0, 10) >= 3) {
-          enemy = new GunShip(
+          enemy = new TieFighter(
             this,
             Phaser.Math.Between(0, this.game.config.width),
             0,
           );
         } else if (Phaser.Math.Between(0, 10) >= 5) {
-          if (this.getEnemiesByType('ChaserShip').length < 5) {
-            enemy = new ChaserShip(
+          if (this.getEnemiesByType('Bomb').length < 5) {
+            enemy = new Bomb(
               this,
               Phaser.Math.Between(0, this.game.config.width),
               0,
             );
           }
         } else {
-          enemy = new CarrierShip(
+          enemy = new ImperialShutle(
             this,
             Phaser.Math.Between(0, this.game.config.width),
             0,

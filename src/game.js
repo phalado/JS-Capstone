@@ -8,6 +8,9 @@ const config = {
   width: 480,
   height: 640,
   backgroundColor: 'black',
+  dom: {
+    createContainer: true,
+  },
   physics: {
     default: 'arcade',
     arcade: {
@@ -16,6 +19,7 @@ const config = {
   },
   scene: [
     SceneMainMenu,
+    // SceneIntro,
     SceneMain,
     SceneGameOver,
   ],

@@ -28,7 +28,7 @@ class SceneMainMenu extends Phaser.Scene {
       btnDown: this.sound.add('sndBtnDown', { volume: 0.1 }),
     };
 
-    this.scene.start('SceneGameOver');
+    // this.scene.start('SceneIntro');
 
     this.btnPlay = this.add.sprite(
       this.game.config.width * 0.5,

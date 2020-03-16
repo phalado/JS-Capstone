@@ -30,7 +30,7 @@ class SceneGameOver extends Phaser.Scene {
       btnDown: this.sound.add('sndBtnDown', { volume: 0.1 }),
     };
 
-    this.song = this.sound.add('gameOver', { volume: 0.1 });
+    this.song = this.sound.add('gameOver', { volume: 0.3 });
     this.song.play();
 
     this.btnRestart = this.add.sprite(
