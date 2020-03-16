@@ -40,6 +40,21 @@ class Player extends Entity {
     });
   }
 
+  updateHealth() {
+    if (this.getData('health') > 0) {
+      if (this.getData('health') === 1) {
+        this.scene.sfx.useForce.play();
+      } else {
+        this.scene.sfx.r2d2Scream.play();
+      }
+      this.setData('health', this.getData('health') - 1);
+      this.scene.cameras.main.shake(250, 0.02);
+      return false;
+    }
+
+    return true;
+  }
+
   update() {
     this.body.setVelocity(0, 0);
 

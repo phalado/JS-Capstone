@@ -7,7 +7,7 @@ class TieFighter extends Entity {
     super(scene, x, y, 'tieFighter', 'TieFighter');
     this.body.velocity.y = Phaser.Math.Between(50, 100);
     this.shootTimer = this.scene.time.addEvent({
-      delay: 1000,
+      delay: 1500,
       callback() {
         const laser = new EnemyLaser(
           this.scene,
@@ -21,6 +21,7 @@ class TieFighter extends Entity {
       loop: true,
     });
     this.play('tieFighter');
+    this.setData('health', 2);
   }
 
   onDestroy() {
@@ -29,6 +30,16 @@ class TieFighter extends Entity {
         this.shootTimer.remove(false);
       }
     }
+  }
+
+  updateHealth() {
+    if (this.getData('health') > 0) {
+      this.scene.sfx.useForce.play();
+      this.setData('health', this.getData('health') - 1);
+      return false;
+    }
+
+    return true;
   }
 }
 

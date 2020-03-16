@@ -44,6 +44,13 @@ class SceneMain extends Phaser.Scene {
     this.load.audio('battleTheme', 'content/swBattleTheme.mp3');
     this.load.audio('r2d2Scream', 'content/r2d2-scream.mp3');
     this.load.audio('useForce', 'content/swUseForce.wav');
+
+    this.load.image('hp0Of5', 'content/saberEmpty.png');
+    this.load.image('hp1Of5', 'content/saberOne.png');
+    this.load.image('hp2Of5', 'content/saberTwo.png');
+    this.load.image('hp3Of5', 'content/saberThree.png');
+    this.load.image('hp4Of5', 'content/saberFour.png');
+    this.load.image('hp5Of5', 'content/saberComplete.png');
   }
 
   create() {
@@ -108,6 +115,17 @@ class SceneMain extends Phaser.Scene {
       'sprPlayer',
     );
 
+    this.hpBar = [
+      'hp0Of5',
+      'hp1Of5',
+      'hp2Of5',
+      'hp3Of5',
+      'hp4Of5',
+      'hp5Of5',
+    ];
+
+    this.updateHPBar(this.player);
+
     this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
     this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
     this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
@@ -121,10 +139,14 @@ class SceneMain extends Phaser.Scene {
     this.physics.add.collider(this.playerLasers, this.enemies, (playerLaser, enemy) => {
       if (enemy) {
         if (enemy.onDestroy !== undefined) {
-          enemy.onDestroy();
+          if (!enemy.updateHealth()) {
+            enemy.onDestroy();
+          }
         }
 
-        enemy.explode(true);
+        if (!enemy.updateHealth()) {
+          enemy.explode(true);
+        }
         playerLaser.destroy();
       }
     });
@@ -132,20 +154,14 @@ class SceneMain extends Phaser.Scene {
     this.physics.add.collider(this.player, this.enemyLasers, (player, laser) => {
       if (!player.getData('isDead')
           && !laser.getData('isDead')) {
-        if (player.getData('health') > 1) {
-          player.setData('health', player.getData('health') - 1);
-          this.sfx.r2d2Scream.play();
-          laser.destroy();
-          console.log(player.getData('health'));
-        } else if (player.getData('health') === 1) {
-          this.sfx.useForce.play();
-          laser.destroy();
-          player.setData('health', player.getData('health') - 1);
-        } else {
+        if (player.updateHealth()) {
           player.explode(false);
           laser.destroy();
           this.song.stop();
           player.onDestroy();
+        } else {
+          laser.destroy();
+          this.updateHPBar(this.player);
         }
       }
     });
@@ -153,20 +169,14 @@ class SceneMain extends Phaser.Scene {
     this.physics.add.collider(this.player, this.enemies, (player, enemy) => {
       if (!player.getData('isDead')
           && !enemy.getData('isDead')) {
-        if (player.getData('health') > 1) {
-          player.setData('health', player.getData('health') - 1);
-          this.sfx.r2d2Scream.play();
-          enemy.destroy();
-          console.log(player.getData('health'));
-        } else if (player.getData('health') === 1) {
-          this.sfx.useForce.play();
-          enemy.destroy();
-          player.setData('health', player.getData('health') - 1);
-        } else {
+        if (player.updateHealth()) {
           player.explode(false);
           enemy.destroy();
           this.song.stop();
           player.onDestroy();
+        } else {
+          enemy.destroy();
+          this.updateHPBar(this.player);
         }
       }
     });
@@ -288,6 +298,14 @@ class SceneMain extends Phaser.Scene {
       }
     }
     return arr;
+  }
+
+  updateHPBar(player) {
+    this.sceneHPBar = this.add.image(
+      this.game.config.width * 0.3,
+      this.game.config.height * 0.05,
+      this.hpBar[player.getData('health')],
+    );
   }
 }
 

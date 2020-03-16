@@ -13,13 +13,13 @@ class SceneGameOver extends Phaser.Scene {
   }
 
   create() {
-    this.goTitle = this.add.image(
+    this.gameOverTitle = this.add.image(
       this.game.config.width * 0.5,
       this.game.config.height * 0.15,
       'goTitle',
     );
 
-    this.goImage = this.add.image(
+    this.gameOverImage = this.add.image(
       this.game.config.width * 0.5,
       this.game.config.height * 0.5,
       'vader',

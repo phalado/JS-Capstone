@@ -42,6 +42,10 @@ class Bomb extends Entity {
       }
     }
   }
+
+  updateHealth() {
+    return true;
+  }
 }
 
 export default Bomb;

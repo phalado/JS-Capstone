@@ -1,3 +1,8 @@
+canvas {
+  display: flex;
+  margin: auto;
+}
+
 .body {
   background: black;
   color: #ffbe00;
