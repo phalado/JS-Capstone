@@ -14,6 +14,7 @@ class Entity extends Phaser.GameObjects.Sprite {
   explode(canDestroy) {
     if (!this.getData('isDead')) {
       this.setTexture('sprExplosion');
+      this.setData('score', 0);
       this.play('sprExplosion');
 
       const sound = Phaser.Math.Between(0, this.scene.sfx.explosions.length - 1);

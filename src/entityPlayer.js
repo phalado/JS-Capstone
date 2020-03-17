@@ -1,6 +1,7 @@
 import Entity from './Entities';
 import Phaser from './phaser';
 import PlayerLaser from './entityPlayerLaser';
+import { storeScores } from './gameHelper';
 
 class Player extends Entity {
   constructor(scene, x, y, key) {
@@ -11,6 +12,7 @@ class Player extends Entity {
     this.setData('timerShootDelay', 10);
     this.setData('timerShootTick', this.getData('timerShootDelay') - 1);
     this.setData('health', 5);
+    this.setData('score', 0);
   }
 
   moveUp() {
@@ -53,6 +55,13 @@ class Player extends Entity {
     }
 
     return true;
+  }
+
+  setScore(value) {
+    if (!this.getData('isDead')) {
+      this.setData('score', this.getData('score') + value);
+      storeScores(this.getData('score'));
+    }
   }
 
   update() {

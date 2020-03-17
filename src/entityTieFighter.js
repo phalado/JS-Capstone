@@ -22,6 +22,7 @@ class TieFighter extends Entity {
     });
     this.play('tieFighter');
     this.setData('health', 2);
+    this.setData('score', 300);
   }
 
   onDestroy() {

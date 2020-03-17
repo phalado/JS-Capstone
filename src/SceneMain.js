@@ -4,6 +4,7 @@ import ScrollingBackground from './entityScrollingBackground';
 import ImperialShutle from './entityImperialShutle';
 import TieFighter from './entityTieFighter';
 import Bomb from './entityBomb';
+import TieAdvanced from './entityTieAdvanced';
 
 class SceneMain extends Phaser.Scene {
   constructor() {
@@ -22,6 +23,11 @@ class SceneMain extends Phaser.Scene {
     this.load.spritesheet('tieFighter', 'content/tieFighterp.png', {
       frameWidth: 16,
       frameHeight: 16,
+    });
+
+    this.load.spritesheet('tieAdvanced', 'content/tieAdvanced.png', {
+      frameWidth: 40,
+      frameHeight: 35,
     });
 
     this.load.image('bomb', 'content/sprEnemy1.png');
@@ -44,6 +50,7 @@ class SceneMain extends Phaser.Scene {
     this.load.audio('battleTheme', 'content/swBattleTheme.mp3');
     this.load.audio('r2d2Scream', 'content/r2d2-scream.mp3');
     this.load.audio('useForce', 'content/swUseForce.wav');
+    this.load.audio('vaderBreath', 'content/swVader.wav');
 
     this.load.image('hp0Of5', 'content/saberEmpty.png');
     this.load.image('hp1Of5', 'content/saberOne.png');
@@ -90,6 +97,7 @@ class SceneMain extends Phaser.Scene {
       laser: this.sound.add('sndLaser', { volume: 0.1 }),
       r2d2Scream: this.sound.add('r2d2Scream', { volume: 0.1 }),
       useForce: this.sound.add('useForce', { volume: 0.3 }),
+      vaderBreath: this.sound.add('vaderBreath', { volume: 0.1 }),
     };
 
 
@@ -116,13 +124,19 @@ class SceneMain extends Phaser.Scene {
     );
 
     this.hpBar = [
-      'hp0Of5',
-      'hp1Of5',
-      'hp2Of5',
-      'hp3Of5',
-      'hp4Of5',
-      'hp5Of5',
+      'hp0Of5', 'hp1Of5', 'hp2Of5', 'hp3Of5', 'hp4Of5', 'hp5Of5',
     ];
+
+    this.sceneScore = this.add.text(
+      this.game.config.width * 0.025,
+      this.game.config.height * 0.925,
+      `Score: ${this.player.getData('score')}`, {
+        color: '#d0c600',
+        fontFamily: 'sans-serif',
+        fontSize: '3vw',
+        lineHeight: 1.3,
+      },
+    );
 
     this.updateHPBar(this.player);
 
@@ -137,14 +151,12 @@ class SceneMain extends Phaser.Scene {
     this.playerLasers = this.add.group();
 
     this.physics.add.collider(this.playerLasers, this.enemies, (playerLaser, enemy) => {
-      if (enemy) {
-        if (enemy.onDestroy !== undefined) {
-          if (enemy.updateHealth()) {
+      if (enemy && !this.player.getData('isDead')) {
+        if (enemy.updateHealth()) {
+          if (enemy.onDestroy !== undefined) {
             enemy.onDestroy();
           }
-        }
-
-        if (enemy.updateHealth()) {
+          this.player.setScore(enemy.getData('score'));
           enemy.explode(true);
         }
         playerLaser.destroy();
@@ -175,12 +187,14 @@ class SceneMain extends Phaser.Scene {
           if (enemy.onDestroy !== undefined) {
             enemy.onDestroy();
           }
+          player.setScore(enemy.getData('score'));
           enemy.destroy();
 
           this.song.stop();
           player.onDestroy();
         } else {
           if (enemy.onDestroy !== undefined) {
+            player.setScore(enemy.getData('score'));
             enemy.onDestroy();
           }
           enemy.destroy();
@@ -225,10 +239,31 @@ class SceneMain extends Phaser.Scene {
       callbackScope: this,
       loop: true,
     });
+
+    this.time.addEvent({
+      delay: 10000,
+      callback() {
+        let enemy = null;
+        enemy = new TieAdvanced(
+          this,
+          this.player.x,
+          0,
+        );
+        if (enemy !== null) {
+          enemy.setScale(2);
+          this.sfx.vaderBreath.play();
+          this.enemies.add(enemy);
+        }
+      },
+      callbackScope: this,
+      loop: true,
+    });
   }
 
   update() {
     this.player.update();
+
+    this.sceneScore.text = `Score: ${this.player.getData('score')}`;
 
     if (!this.player.getData('isDead')) {
       if (this.keyW.isDown) {

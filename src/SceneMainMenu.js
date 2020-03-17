@@ -1,5 +1,6 @@
 import Phaser from './phaser';
 import ScrollingBackground from './entityScrollingBackground';
+import { localStoreScore, getLocalScores } from './gameHelper';
 
 class SceneMainMenu extends Phaser.Scene {
   constructor() {
@@ -15,7 +16,7 @@ class SceneMainMenu extends Phaser.Scene {
     this.load.image('sprBtnRestart', 'content/sprBtnRestart.png');
     this.load.image('sprBtnRestartHover', 'content/sprBtnRestartHover.png');
     this.load.image('sprBtnRestartDown', 'content/sprBtnRestartDown.png');
-    this.load.image('gameTitle', 'content/gameTitle.png');
+    this.load.image('gameTitle', 'content/gameTitle2.png');
 
     this.load.audio('sndBtnOver', 'content/sndBtnOver.wav');
     this.load.audio('sndBtnDown', 'content/sndBtnDown.wav');
@@ -63,6 +64,44 @@ class SceneMainMenu extends Phaser.Scene {
       this.game.config.height * 0.3,
       'gameTitle',
     );
+
+    this.scores = getLocalScores();
+    if (this.scores === null) {
+      this.scores = [0, 0];
+      localStoreScore(this.scores);
+    }
+
+    this.sceneScore = this.add.text(
+      this.game.config.width * 0.05,
+      this.game.config.height * 0.85,
+      `Last Score: ${this.scores[0]}`, {
+        color: '#d0c600',
+        fontFamily: 'sans-serif',
+        fontSize: '2vw',
+        lineHeight: 1.3,
+        textAlign: 'center',
+      },
+    );
+
+    this.sceneScore = this.add.text(
+      this.game.config.width * 0.05,
+      this.game.config.height * 0.9,
+      `High Score: ${this.scores[1]}`, {
+        color: '#d0c600',
+        fontFamily: 'sans-serif',
+        fontSize: '2vw',
+        lineHeight: 1.3,
+      },
+    );
+
+    // this.tweens.add({
+    //   targets: this.gameTitle,
+    //   alpha: { from: 0, to: 1 },
+    //   ease: 'Linear',
+    //   duration: 0,
+    //   repeat: 0,
+    //   yoyo: true,
+    // });
 
     this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 

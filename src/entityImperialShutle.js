@@ -7,6 +7,7 @@ class ImperialShutle extends Entity {
     this.body.velocity.y = Phaser.Math.Between(50, 100);
     this.play('imperialShutle');
     this.setData('health', 3);
+    this.setData('score', 500);
   }
 
   updateHealth() {

@@ -1,5 +1,6 @@
 import Phaser from './phaser';
 import ScrollingBackground from './entityScrollingBackground';
+import { getLocalScores } from './gameHelper';
 
 class SceneGameOver extends Phaser.Scene {
   constructor() {
@@ -9,7 +10,7 @@ class SceneGameOver extends Phaser.Scene {
   preload() {
     this.load.audio('gameOver', 'content/swImperialMarch.mp3');
     this.load.image('vader', 'content/vaderGameOver.jpg');
-    this.load.image('goTitle', 'content/titleGameOver.png');
+    this.load.image('goTitle', 'content/titleGameOver2.png');
   }
 
   create() {
@@ -21,9 +22,22 @@ class SceneGameOver extends Phaser.Scene {
 
     this.gameOverImage = this.add.image(
       this.game.config.width * 0.5,
-      this.game.config.height * 0.5,
+      this.game.config.height * 0.45,
       'vader',
     );
+
+    this.scores = getLocalScores();
+    this.gameOverSceneScore = this.add.text(
+      this.game.config.width * 0.3,
+      this.game.config.height * 0.75,
+      `Score: ${this.scores[0]}`, {
+        color: '#d0c600',
+        fontFamily: 'sans-serif',
+        fontSize: '3vw',
+        lineHeight: 1.3,
+      },
+    );
+
 
     this.sfx = {
       btnOver: this.sound.add('sndBtnOver', { volume: 0.1 }),
@@ -35,7 +49,7 @@ class SceneGameOver extends Phaser.Scene {
 
     this.btnRestart = this.add.sprite(
       this.game.config.width * 0.5,
-      this.game.config.height * 0.85,
+      this.game.config.height * 0.9,
       'sprBtnRestart',
     );
 
