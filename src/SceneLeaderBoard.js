@@ -1,6 +1,6 @@
 import Phaser from './phaser';
 import ScrollingBackground from './entityScrollingBackground';
-import { submitHighScore, getScoreBoard } from './leaderboardCall';
+import { getScoreBoard } from './leaderboardCall';
 
 class SceneLeaderBoard extends Phaser.Scene {
   constructor() {
@@ -8,7 +8,7 @@ class SceneLeaderBoard extends Phaser.Scene {
   }
 
   preload() {
-    this.load.audio('gameOver', 'content/swVictoryTheme.mp3');
+    this.load.audio('victoryTheme', 'content/swVictoryTheme.mp3');
     this.load.image('leaderBoardTitle', 'content/leaderBoard.png');
 
     this.load.image('sprBtnRestart', 'content/sprBtnRestart.png');
@@ -38,7 +38,7 @@ class SceneLeaderBoard extends Phaser.Scene {
       btnDown: this.sound.add('sndBtnDown', { volume: 0.1 }),
     };
 
-    this.song = this.sound.add('gameOver', { volume: 0.3 });
+    this.song = this.sound.add('victoryTheme', { volume: 0.3 });
     this.song.play();
 
     this.btnRestart = this.add.sprite(

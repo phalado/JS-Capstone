@@ -15,7 +15,7 @@ async function createGame() {
   const response = await fetch(address, settings);
   const answer = await response.json();
 
-  console.log(answer);
+  return answer;
 }
 
 async function submitHighScore(userName, scoreValue) {
@@ -24,7 +24,7 @@ async function submitHighScore(userName, scoreValue) {
     score: scoreValue,
   };
   const post = JSON.stringify(submit);
-  const address = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/alQQjsJhDvPt7sWACMIc/scores/';
+  const address = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/N9E2TejbOkDiI58nb6Vu/scores/';
   const settings = {
     method: 'POST',
     headers: {
@@ -34,7 +34,8 @@ async function submitHighScore(userName, scoreValue) {
     body: post,
   };
   const response = await fetch(address, settings);
-  // const answer = await response.json();
+  const answer = await response.json();
+  return answer;
 }
 
 function sorting(obj) {
@@ -46,7 +47,7 @@ function sorting(obj) {
 }
 
 async function getScoreBoard() {
-  const address = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/alQQjsJhDvPt7sWACMIc/scores/';
+  const address = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/N9E2TejbOkDiI58nb6Vu/scores/';
   const settings = {
     method: 'GET',
     headers: {
@@ -60,4 +61,4 @@ async function getScoreBoard() {
   return sorting(answer.result);
 }
 
-export { submitHighScore, getScoreBoard };
+export { submitHighScore, getScoreBoard, createGame };

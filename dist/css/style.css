@@ -12,6 +12,9 @@ canvas {
   overflow: hidden;
 }
 
-.userName {
-  background-color: white;
+div {
+  left: 0;
+  right: 0;
+  margin-right: auto!important;
+  margin-left: auto;
 }

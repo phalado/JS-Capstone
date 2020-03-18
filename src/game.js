@@ -4,7 +4,6 @@ import SceneMain from './SceneMain';
 import SceneIntro from './SceneIntro';
 import SceneGameOver from './SceneGameOver';
 import SceneLeaderBoard from './SceneLeaderBoard';
-import SceneName from './SceneName';
 
 const config = {
   type: Phaser.WEBGL,
@@ -22,7 +21,6 @@ const config = {
     },
   },
   scene: [
-    SceneName,
     SceneIntro,
     SceneMainMenu,
     SceneMain,

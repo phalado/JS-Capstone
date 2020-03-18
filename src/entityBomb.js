@@ -11,6 +11,7 @@ class Bomb extends Entity {
     };
     this.state = this.states.MOVE_DOWN;
     this.setData('score', 100);
+    this.answer = true;
   }
 
   update() {
@@ -45,7 +46,7 @@ class Bomb extends Entity {
   }
 
   updateHealth() {
-    return true;
+    return this.answer;
   }
 }
 

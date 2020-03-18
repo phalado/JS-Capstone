@@ -1,6 +1,8 @@
 import Phaser from './phaser';
 import ScrollingBackground from './entityScrollingBackground';
 import { getLocalScores } from './gameHelper';
+import { submitHighScore } from './leaderboardCall';
+
 
 class SceneGameOver extends Phaser.Scene {
   constructor() {
@@ -28,8 +30,8 @@ class SceneGameOver extends Phaser.Scene {
 
     this.scores = getLocalScores();
     this.gameOverSceneScore = this.add.text(
-      this.game.config.width * 0.5,
-      this.game.config.height * 0.65,
+      this.game.config.width * 0.6,
+      this.game.config.height * 0.72,
       `Score: ${this.scores[0]}`, {
         color: '#d0c600',
         fontFamily: 'sans-serif',
@@ -113,17 +115,31 @@ class SceneGameOver extends Phaser.Scene {
       this.backgrounds.push(bg);
     }
 
+    this.userName = '';
+
     const div = document.createElement('div');
     div.innerHTML = `
-      <input type="text" name="nameField" placeholder="Enter your name" style="font-size: 32px">
-      <input type="button" name="playButton" value="Let's Play" style="font-size: 32px">
+      <input type="text" id="nameField" placeholder="Enter your name" style="font-size: 1.5vw"><br>
+      <input type="button" name="submitButton" value="Submit Score" style="font-size: 1.5vw">
     `;
 
-    this.tweens.add({
-      targets: element,
-      y: 300,
-      duration: 3000,
-      ease: 'Power3',
+    const element = this.add.dom(280, 480, div);
+    element.addListener('click');
+
+    element.on('click', (event) => {
+      if (event.target.name === 'submitButton') {
+        const inputText = document.getElementById('nameField');
+        if (inputText.value !== '') {
+          element.removeListener('click');
+          element.setVisible(false);
+          this.userName = inputText.value;
+          this.submit = submitHighScore(this.userName, this.scores[0]);
+          this.submit.then(() => {
+            this.scene.scene.song.stop();
+            this.scene.start('SceneLeaderBoard');
+          });
+        }
+      }
     });
   }
 
