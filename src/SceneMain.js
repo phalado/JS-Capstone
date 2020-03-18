@@ -241,7 +241,7 @@ class SceneMain extends Phaser.Scene {
     });
 
     this.time.addEvent({
-      delay: 10000,
+      delay: 30000,
       callback() {
         let enemy = null;
         enemy = new TieAdvanced(

@@ -10,12 +10,19 @@ class SceneMainMenu extends Phaser.Scene {
   preload() {
     this.load.image('sprBg0', 'content/sprBg0.png');
     this.load.image('sprBg1', 'content/sprBg1.png');
+
     this.load.image('sprBtnPlay', 'content/sprBtnPlay.png');
     this.load.image('sprBtnPlayHover', 'content/sprBtnPlayHover.png');
     this.load.image('sprBtnPlayDown', 'content/sprBtnPlayDown.png');
+
     this.load.image('sprBtnRestart', 'content/sprBtnRestart.png');
     this.load.image('sprBtnRestartHover', 'content/sprBtnRestartHover.png');
     this.load.image('sprBtnRestartDown', 'content/sprBtnRestartDown.png');
+
+    this.load.image('sprBtnRecord', 'content/sprBtnRecord.png');
+    this.load.image('sprBtnRecordHover', 'content/sprBtnRecordHover.png');
+    this.load.image('sprBtnRecordDown', 'content/sprBtnRecordDown.png');
+
     this.load.image('gameTitle', 'content/gameTitle2.png');
 
     this.load.audio('sndBtnOver', 'content/sndBtnOver.wav');
@@ -29,10 +36,10 @@ class SceneMainMenu extends Phaser.Scene {
       btnDown: this.sound.add('sndBtnDown', { volume: 0.1 }),
     };
 
-    // this.scene.start('SceneIntro');
+    // this.scene.start('SceneGameOver');
 
     this.btnPlay = this.add.sprite(
-      this.game.config.width * 0.5,
+      this.game.config.width * 0.3,
       this.game.config.height * 0.7,
       'sprBtnPlay',
     );
@@ -64,6 +71,34 @@ class SceneMainMenu extends Phaser.Scene {
       this.game.config.height * 0.3,
       'gameTitle',
     );
+
+    this.btnRecord = this.add.sprite(
+      this.game.config.width * 0.7,
+      this.game.config.height * 0.7,
+      'sprBtnRecord',
+    );
+
+    this.btnRecord.setInteractive();
+
+    this.btnRecord.on('pointerover', () => {
+      this.btnRecord.setTexture('sprBtnRecordHover');
+      this.sfx.btnOver.play();
+    }, this);
+
+    this.btnRecord.on('pointerout', () => {
+      this.btnRecord.setTexture('sprBtnRecord');
+    });
+
+    this.btnRecord.on('pointerdown', () => {
+      this.btnRecord.setTexture('sprBtnRecordDown');
+      this.sfx.btnDown.play();
+    }, this);
+
+    this.btnRecord.on('pointerup', () => {
+      this.btnRecord.setTexture('sprBtnRecord');
+      this.song.stop();
+      this.scene.start('SceneLeaderBoard');
+    }, this);
 
     this.scores = getLocalScores();
     if (this.scores === null) {

@@ -10,34 +10,34 @@ class SceneGameOver extends Phaser.Scene {
   preload() {
     this.load.audio('gameOver', 'content/swImperialMarch.mp3');
     this.load.image('vader', 'content/vaderGameOver.jpg');
-    this.load.image('goTitle', 'content/titleGameOver2.png');
+    this.load.image('gameOverTitle', 'content/titleGameOver2.png');
   }
 
   create() {
     this.gameOverTitle = this.add.image(
       this.game.config.width * 0.5,
-      this.game.config.height * 0.15,
-      'goTitle',
+      this.game.config.height * 0.1,
+      'gameOverTitle',
     );
 
     this.gameOverImage = this.add.image(
       this.game.config.width * 0.5,
-      this.game.config.height * 0.45,
+      this.game.config.height * 0.4,
       'vader',
     );
 
     this.scores = getLocalScores();
     this.gameOverSceneScore = this.add.text(
-      this.game.config.width * 0.3,
-      this.game.config.height * 0.75,
+      this.game.config.width * 0.5,
+      this.game.config.height * 0.65,
       `Score: ${this.scores[0]}`, {
         color: '#d0c600',
         fontFamily: 'sans-serif',
         fontSize: '3vw',
         lineHeight: 1.3,
+        align: 'center',
       },
     );
-
 
     this.sfx = {
       btnOver: this.sound.add('sndBtnOver', { volume: 0.1 }),
@@ -48,7 +48,7 @@ class SceneGameOver extends Phaser.Scene {
     this.song.play();
 
     this.btnRestart = this.add.sprite(
-      this.game.config.width * 0.5,
+      this.game.config.width * 0.3,
       this.game.config.height * 0.9,
       'sprBtnRestart',
     );
@@ -75,6 +75,34 @@ class SceneGameOver extends Phaser.Scene {
       this.scene.start('SceneMain');
     }, this);
 
+    this.btnRecord = this.add.sprite(
+      this.game.config.width * 0.7,
+      this.game.config.height * 0.9,
+      'sprBtnRecord',
+    );
+
+    this.btnRecord.setInteractive();
+
+    this.btnRecord.on('pointerover', () => {
+      this.btnRecord.setTexture('sprBtnRecordHover');
+      this.sfx.btnOver.play();
+    }, this);
+
+    this.btnRecord.on('pointerout', () => {
+      this.btnRecord.setTexture('sprBtnRecord');
+    });
+
+    this.btnRecord.on('pointerdown', () => {
+      this.btnRecord.setTexture('sprBtnRecordDown');
+      this.sfx.btnDown.play();
+    }, this);
+
+    this.btnRecord.on('pointerup', () => {
+      this.btnRecord.setTexture('sprBtnRecord');
+      this.song.stop();
+      this.scene.start('SceneLeaderBoard');
+    }, this);
+
     this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
     this.backgrounds = [];
@@ -84,6 +112,19 @@ class SceneGameOver extends Phaser.Scene {
       const bg = new ScrollingBackground(this, key, i * 10);
       this.backgrounds.push(bg);
     }
+
+    const div = document.createElement('div');
+    div.innerHTML = `
+      <input type="text" name="nameField" placeholder="Enter your name" style="font-size: 32px">
+      <input type="button" name="playButton" value="Let's Play" style="font-size: 32px">
+    `;
+
+    this.tweens.add({
+      targets: element,
+      y: 300,
+      duration: 3000,
+      ease: 'Power3',
+    });
   }
 
   update() {

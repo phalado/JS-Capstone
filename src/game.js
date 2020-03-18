@@ -3,9 +3,12 @@ import SceneMainMenu from './SceneMainMenu';
 import SceneMain from './SceneMain';
 import SceneIntro from './SceneIntro';
 import SceneGameOver from './SceneGameOver';
+import SceneLeaderBoard from './SceneLeaderBoard';
+import SceneName from './SceneName';
 
 const config = {
   type: Phaser.WEBGL,
+  parent: 'divld',
   width: 480,
   height: 640,
   backgroundColor: 'black',
@@ -19,10 +22,12 @@ const config = {
     },
   },
   scene: [
+    SceneName,
     SceneIntro,
     SceneMainMenu,
     SceneMain,
     SceneGameOver,
+    SceneLeaderBoard,
   ],
   pixelArt: true,
   roundPixels: true,
