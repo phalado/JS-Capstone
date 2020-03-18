@@ -79,9 +79,6 @@ class SceneLeaderBoard extends Phaser.Scene {
       this.backgrounds.push(bg);
     }
 
-    // createGame();
-    // submitHighScore('Raphael', 400);
-
     this.getScores = getScoreBoard();
 
     this.getScores.then(scores => {

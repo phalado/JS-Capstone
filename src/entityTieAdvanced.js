@@ -69,11 +69,6 @@ class TieAdvanced extends Entity {
       const dy = this.scene.player.y - this.y;
       this.body.velocity.x = Phaser.Math.Between(-50, 50);
       this.body.velocity.y = dy - 200;
-
-      // this.body.setVelocity(
-      //   Math.cos(angle) * speed,
-      //   Math.sin(angle) * speed,
-      // );
     }
   }
 }

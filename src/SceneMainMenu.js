@@ -36,8 +36,6 @@ class SceneMainMenu extends Phaser.Scene {
       btnDown: this.sound.add('sndBtnDown', { volume: 0.1 }),
     };
 
-    // this.scene.start('SceneGameOver');
-
     this.btnPlay = this.add.sprite(
       this.game.config.width * 0.3,
       this.game.config.height * 0.7,
@@ -128,15 +126,6 @@ class SceneMainMenu extends Phaser.Scene {
         lineHeight: 1.3,
       },
     );
-
-    // this.tweens.add({
-    //   targets: this.gameTitle,
-    //   alpha: { from: 0, to: 1 },
-    //   ease: 'Linear',
-    //   duration: 0,
-    //   repeat: 0,
-    //   yoyo: true,
-    // });
 
     this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
