@@ -1,1 +1,1 @@
-web: npm webpack
+web: npx webpack
