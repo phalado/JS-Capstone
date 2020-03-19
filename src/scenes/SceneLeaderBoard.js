@@ -1,6 +1,6 @@
-import Phaser from './phaser';
-import ScrollingBackground from './entityScrollingBackground';
-import { getScoreBoard } from './leaderboardCall';
+import Phaser from '../phaser';
+import ScrollingBackground from '../entities/entityScrollingBackground';
+import { getScoreBoard } from '../leaderboardCall';
 
 class SceneLeaderBoard extends Phaser.Scene {
   constructor() {

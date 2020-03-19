@@ -1,6 +1,6 @@
-import Phaser from './phaser';
-import ScrollingBackground from './entityScrollingBackground';
-import { localStoreScore, getLocalScores } from './gameHelper';
+import Phaser from '../phaser';
+import ScrollingBackground from '../entities/entityScrollingBackground';
+import { getLocalScores } from '../localStorage';
 
 class SceneMainMenu extends Phaser.Scene {
   constructor() {
@@ -36,6 +36,12 @@ class SceneMainMenu extends Phaser.Scene {
       btnDown: this.sound.add('sndBtnDown', { volume: 0.1 }),
     };
 
+    this.gameTitle = this.add.image(
+      this.game.config.width * 0.5,
+      this.game.config.height * 0.3,
+      'gameTitle',
+    );
+
     this.btnPlay = this.add.sprite(
       this.game.config.width * 0.3,
       this.game.config.height * 0.7,
@@ -43,32 +49,12 @@ class SceneMainMenu extends Phaser.Scene {
     );
 
     this.btnPlay.setInteractive();
-
-    this.btnPlay.on('pointerover', () => {
-      this.btnPlay.setTexture('sprBtnPlayHover');
-      this.sfx.btnOver.play();
-    }, this);
-
-    this.btnPlay.on('pointerout', () => {
-      this.btnPlay.setTexture('sprBtnPlay');
-    });
-
-    this.btnPlay.on('pointerdown', () => {
-      this.btnPlay.setTexture('sprBtnPlayDown');
-      this.sfx.btnDown.play();
-    }, this);
-
+    this.createButton(this.btnPlay, 'sprBtnPlay', 'sprBtnPlayHover', 'sprBtnPlayDown');
     this.btnPlay.on('pointerup', () => {
       this.btnPlay.setTexture('sprBtnPlay');
       this.song.stop();
       this.scene.start('SceneMain');
     }, this);
-
-    this.gameTitle = this.add.image(
-      this.game.config.width * 0.5,
-      this.game.config.height * 0.3,
-      'gameTitle',
-    );
 
     this.btnRecord = this.add.sprite(
       this.game.config.width * 0.7,
@@ -77,21 +63,7 @@ class SceneMainMenu extends Phaser.Scene {
     );
 
     this.btnRecord.setInteractive();
-
-    this.btnRecord.on('pointerover', () => {
-      this.btnRecord.setTexture('sprBtnRecordHover');
-      this.sfx.btnOver.play();
-    }, this);
-
-    this.btnRecord.on('pointerout', () => {
-      this.btnRecord.setTexture('sprBtnRecord');
-    });
-
-    this.btnRecord.on('pointerdown', () => {
-      this.btnRecord.setTexture('sprBtnRecordDown');
-      this.sfx.btnDown.play();
-    }, this);
-
+    this.createButton(this.btnRecord, 'sprBtnRecord', 'sprBtnRecordHover', 'sprBtnRecordDown');
     this.btnRecord.on('pointerup', () => {
       this.btnRecord.setTexture('sprBtnRecord');
       this.song.stop();
@@ -100,27 +72,26 @@ class SceneMainMenu extends Phaser.Scene {
 
     this.scores = getLocalScores();
 
+    this.scoreTextConfig = {
+      color: '#d0c600',
+      fontFamily: 'sans-serif',
+      fontSize: '2vw',
+      lineHeight: 1.3,
+      textAlign: 'center',
+    };
+
     this.sceneScore = this.add.text(
       this.game.config.width * 0.05,
       this.game.config.height * 0.85,
-      `Last Score: ${this.scores[0]}`, {
-        color: '#d0c600',
-        fontFamily: 'sans-serif',
-        fontSize: '2vw',
-        lineHeight: 1.3,
-        textAlign: 'center',
-      },
+      `Last Score: ${this.scores[0]}`,
+      this.scoreTextConfig,
     );
 
     this.sceneScore = this.add.text(
       this.game.config.width * 0.05,
       this.game.config.height * 0.9,
-      `High Score: ${this.scores[1]}`, {
-        color: '#d0c600',
-        fontFamily: 'sans-serif',
-        fontSize: '2vw',
-        lineHeight: 1.3,
-      },
+      `High Score: ${this.scores[1]}`,
+      this.scoreTextConfig,
     );
 
     this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
@@ -146,6 +117,22 @@ class SceneMainMenu extends Phaser.Scene {
       this.song.stop();
       this.scene.start('SceneMain');
     }
+  }
+
+  createButton(btn, spr, sprHover, sprDown) {
+    btn.on('pointerover', () => {
+      btn.setTexture(sprHover);
+      this.sfx.btnOver.play();
+    }, this);
+
+    btn.on('pointerout', () => {
+      btn.setTexture(spr);
+    });
+
+    btn.on('pointerdown', () => {
+      btn.setTexture(sprDown);
+      this.sfx.btnDown.play();
+    }, this);
   }
 }
 

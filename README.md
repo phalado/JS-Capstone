@@ -100,15 +100,25 @@ If you manage to destroy his ship don't fool yourself. He will be back, after al
 This game is composed by 5 scenes each one with its music:
 
 * Introduction: 
+
 ![SC-Intro][SC-Intro]
+
 * Main Menu: 
+
 ![SC-MM][SC-MM]
+
 * Game: 
+
 ![SC-Game][SC-Game]
+
 * Game Over: 
+
 ![SC-GO][SC-GO]
+
 * Leader Board: 
+
 ![SC-LB][SC-LB]
+
 
 It is important to mention that the Leader Board will only show 20 names.
 

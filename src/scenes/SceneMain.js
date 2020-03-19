@@ -1,10 +1,10 @@
-import Phaser from './phaser';
-import Player from './entityPlayer';
-import ScrollingBackground from './entityScrollingBackground';
-import ImperialShutle from './entityImperialShutle';
-import TieFighter from './entityTieFighter';
-import Bomb from './entityBomb';
-import TieAdvanced from './entityTieAdvanced';
+import Phaser from '../phaser';
+import Player from '../entities/entityPlayer';
+import ScrollingBackground from '../entities/entityScrollingBackground';
+import ImperialShutle from '../entities/entityImperialShutle';
+import TieFighter from '../entities/entityTieFighter';
+import Bomb from '../entities/entityBomb';
+import TieAdvanced from '../entities/entityTieAdvanced';
 
 class SceneMain extends Phaser.Scene {
   constructor() {

@@ -1,11 +1,12 @@
-import { submitHighScore, getScoreBoard, createGame } from './leaderboardCall';
+import { submitHighScore, getScoreBoard, createGame } from './leaderboardCall-mock';
 
 describe('Test to add a game, add a score to it and request it back', () => {
   test('Add a mock game and receive a message with the id', () => {
-    const id = '';
+    let id = '';
     const result1 = createGame();
     result1.then(answer1 => {
       expect(answer1).toMatch(/(Game with ID).*(added)/);
+      // eslint-disable-next-line prefer-destructuring
       id = answer1.split(' ')[3];
 
       test('Add a record for the previous id', () => {

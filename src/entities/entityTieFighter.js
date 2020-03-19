@@ -1,6 +1,6 @@
 import Entity from './Entities';
 import EnemyLaser from './entityEnemyLaser';
-import Phaser from './phaser';
+import Phaser from '../phaser';
 
 class TieFighter extends Entity {
   constructor(scene, x, y) {

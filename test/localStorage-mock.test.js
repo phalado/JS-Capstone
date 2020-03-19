@@ -1,4 +1,4 @@
-import { localStoreScore, getLocalScores, storeScores } from './gameHelper';
+import { localStoreScore, getLocalScores, storeScores } from './localStorage-mock';
 
 describe('Test modules belongin to gameHelper file', () => {
   const scores = getLocalScores();

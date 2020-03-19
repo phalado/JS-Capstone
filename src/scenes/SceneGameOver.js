@@ -1,8 +1,7 @@
-import Phaser from './phaser';
-import ScrollingBackground from './entityScrollingBackground';
-import { getLocalScores } from './gameHelper';
-import { submitHighScore } from './leaderboardCall';
-
+import Phaser from '../phaser';
+import ScrollingBackground from '../entities/entityScrollingBackground';
+import { getLocalScores } from '../localStorage';
+import { submitHighScore } from '../leaderboardCall';
 
 class SceneGameOver extends Phaser.Scene {
   constructor() {

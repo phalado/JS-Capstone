@@ -1,7 +1,7 @@
 import Entity from './Entities';
-import Phaser from './phaser';
+import Phaser from '../phaser';
 import PlayerLaser from './entityPlayerLaser';
-import { storeScores } from './gameHelper';
+import { storeScores } from '../localStorage';
 
 class Player extends Entity {
   constructor(scene, x, y, key) {
