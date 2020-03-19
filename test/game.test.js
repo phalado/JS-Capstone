@@ -1,35 +1,13 @@
-// const Player = require('./entityPlayer');
 // import Player from './entityPlayer';
-import Phaser from './phaser';
-import SceneIntro from './SceneIntro';
+import gameRun from './game-mock';
 
-const config = {
-  type: Phaser.WEBGL,
-  parent: 'divld',
-  width: 480,
-  height: 640,
-  backgroundColor: 'black',
-  dom: {
-    createContainer: true,
-  },
-  physics: {
-    default: 'arcade',
-    arcade: {
-      gravity: { x: 0, y: 0 },
-    },
-  },
-  scene: [
-    SceneIntro,
-  ],
-  pixelArt: true,
-  roundPixels: true,
-};
+describe('Tests on a Mocked game', () => {
+  const game = gameRun();
+  test('Receive an object in return when call gameRun', () => {
+    expect(typeof game).toBe('object');
+  });
 
-describe('', () => {
-  const game = new Phaser.Game(config);
-  // const player = new Player(game.scene.scenes[0], 0, 0, 'player');
-  test('', () => {
-    // expect(player.getData('speed')).toBe(200);
-    expect(game.scene.scenes.lenght).toBe(5);
+  test('Expect to see the object that contains all the games scenes', () => {
+    expect(typeof game.scene.scenes).toBe('object');
   });
 });

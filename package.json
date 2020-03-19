@@ -25,8 +25,26 @@
     "url": "https://github.com/phalado/JS-Capstone/issues"
   },
   "homepage": "https://github.com/phalado/JS-Capstone#readme",
+  "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    },
+    "setupFiles": [
+      "jest-canvas-mock"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less|sass|scss)$": "<rootDir>/test/mocks/styleMock.js",
+      "\\.(gif|ttf|eot|svg|png)$": "<rootDir>/test/mocks/fileMock.js"
+    }
+  },
   "devDependencies": {
     "@babel/core": "^7.8.7",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-transform-modules-commonjs": "^7.8.3",
     "@babel/preset-env": "^7.8.7",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
@@ -36,6 +54,7 @@
     "eslint-plugin-import": "^2.20.1",
     "express": "^4.17.1",
     "jest": "^25.1.0",
+    "jest-canvas-mock": "^2.2.0",
     "webpack": "^4.42.0",
     "webpack-cli": "^3.3.11"
   },

@@ -124,6 +124,8 @@ class SceneMainMenu extends Phaser.Scene {
 
     this.song = this.sound.add('theme', { volume: 0.1 });
     this.song.play();
+
+    console.log(this.game);
   }
 
   update() {

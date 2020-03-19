@@ -99,7 +99,7 @@ If you manage to destroy his ship don't fool yourself. He will be back, after al
 
 #### Scenes
 
-This game is composed by 5 scenes each one with its music:
+This game is composed by five scenes each one with its music:
 
 * Introduction: 
 

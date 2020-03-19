@@ -78,7 +78,7 @@ class SceneGameOver extends Phaser.Scene {
 
     this.btnAbout = this.add.sprite(
       this.game.config.width * 0.15,
-      this.game.config.height * 0.7,
+      this.game.config.height * 0.9,
       'sprBtnAbout',
     );
 
