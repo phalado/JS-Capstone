@@ -1,5 +1,7 @@
 # JavaScript Capstone Project: Build a Shooter Game
 
+<h1 align="center"><img src="https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/dist/content/gameTitle2.png"><h1
+
 This is Microverse's final project in Javascript's course.
 
 In this project, I build a shooter game using JavaScript's framework [Phaser 3][phaser-url], a "fast, free and fun open-source framework for Canvas and WebGL powered browser games".
@@ -169,6 +171,7 @@ Follow me on [twitter][rapha-twitter],  visit my [Github portfolio][rapha-github
 [rapha-personal]: https://phalado.github.io/
 
 <!-- Images -->
+[logo]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/dist/content/gameTitle2.png
 [wasd]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/Images/wasd.png
 [space]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/Images/space-key.png
 [X-Wing]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/dist/content/xWing.png

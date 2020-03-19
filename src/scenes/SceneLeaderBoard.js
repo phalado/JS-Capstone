@@ -48,21 +48,7 @@ class SceneLeaderBoard extends Phaser.Scene {
     );
 
     this.btnRestart.setInteractive();
-
-    this.btnRestart.on('pointerover', () => {
-      this.btnRestart.setTexture('sprBtnRestartHover');
-      this.sfx.btnOver.play();
-    }, this);
-
-    this.btnRestart.on('pointerout', () => {
-      this.btnRestart.setTexture('sprBtnRestart');
-    });
-
-    this.btnRestart.on('pointerdown', () => {
-      this.btnRestart.setTexture('sprBtnRestartDown');
-      this.sfx.btnDown.play();
-    }, this);
-
+    this.createButton(this.btnRestart, 'sprBtnRestart', 'sprBtnRestartHover', 'sprBtnRestartDown');
     this.btnRestart.on('pointerup', () => {
       this.btnRestart.setTexture('sprBtnRestart');
       this.song.stop();
@@ -162,6 +148,22 @@ class SceneLeaderBoard extends Phaser.Scene {
       this.song.stop();
       this.scene.start('SceneMain');
     }
+  }
+
+  createButton(btn, spr, sprHover, sprDown) {
+    btn.on('pointerover', () => {
+      btn.setTexture(sprHover);
+      this.sfx.btnOver.play();
+    }, this);
+
+    btn.on('pointerout', () => {
+      btn.setTexture(spr);
+    });
+
+    btn.on('pointerdown', () => {
+      btn.setTexture(sprDown);
+      this.sfx.btnDown.play();
+    }, this);
   }
 }
 

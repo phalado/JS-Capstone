@@ -69,6 +69,13 @@ class SceneMain extends Phaser.Scene {
     });
 
     this.anims.create({
+      key: 'tieAdvanced',
+      frames: this.anims.generateFrameNumbers('tieAdvanced'),
+      frameRate: 20,
+      repeat: -1,
+    });
+
+    this.anims.create({
       key: 'imperialShutle',
       frames: this.anims.generateFrameNumbers('imperialShutle'),
       frameRate: 20,
