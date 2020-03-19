@@ -1,6 +1,6 @@
 # JavaScript Capstone Project: Build a Shooter Game
 
-<h1 align="center"><img src="https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/dist/content/gameTitle2.png"><h1>
+<h1 align="center"><img src="https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/dist/content/gameTitle2.png"></h1>
 
 This is Microverse's final project in Javascript's course.
 
