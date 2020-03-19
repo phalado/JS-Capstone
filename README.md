@@ -99,7 +99,7 @@ If you manage to destroy his ship don't fool yourself. He will be back, after al
 
 #### Scenes
 
-This game is composed by five scenes each one with its music:
+This game is composed by six scenes each one with its music:
 
 * Introduction: 
 
@@ -120,6 +120,10 @@ This game is composed by five scenes each one with its music:
 * Leader Board: 
 
 ![SC-LB][SC-LB]
+
+* About: 
+
+![SCAB][SC-AB]
 
 
 It is important to mention that the Leader Board will only show 20 names.
@@ -183,5 +187,6 @@ Follow me on [twitter][rapha-twitter],  visit my [Github portfolio][rapha-github
 [SC-Intro]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/Images/sceneIntro.png
 [SC-MM]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/Images/sceneMM.png
 [SC-Game]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/Images/sceneGame.png
+[SC-AB]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/Images/sceneAB.png
 [SC-GO]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/Images/sceneGO.png
 [SC-LB]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/Images/sceneLB.png
