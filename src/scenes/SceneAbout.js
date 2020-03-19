@@ -72,7 +72,7 @@ class SceneAbout extends Phaser.Scene {
     this.textConfig = {
       color: '#d0c600',
       fontFamily: 'sans-serif',
-      fontSize: '1.3vw',
+      fontSize: '17px',
       lineHeight: 1.3,
       align: 'justify',
       wordWrap: {
