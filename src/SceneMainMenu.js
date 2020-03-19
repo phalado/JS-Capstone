@@ -99,10 +99,6 @@ class SceneMainMenu extends Phaser.Scene {
     }, this);
 
     this.scores = getLocalScores();
-    if (this.scores === null) {
-      this.scores = [0, 0];
-      localStoreScore(this.scores);
-    }
 
     this.sceneScore = this.add.text(
       this.game.config.width * 0.05,

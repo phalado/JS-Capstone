@@ -4,6 +4,23 @@ This is Microverse's final project in Javascript's course.
 
 In this project, I build a shooter game using JavaScript's framework [Phaser 3][phaser-url], a "fast, free and fun open-source framework for Canvas and WebGL powered browser games".
 
+
+## Table of Contents
+
+- [JavaScript Capstone Project: Build a Shooter Game](#javascript-capstone-project-build-a-shooter-game)
+  - [Table of Contents](#table-of-contents)
+  - [About](#about)
+  - [The game](#the-game)
+    - [How to play](#how-to-play)
+    - [Design](#design)
+      - [Player's ship](#players-ship)
+      - [Enemies](#enemies)
+      - [Scenes](#scenes)
+  - [Technologies used](#technologies-used)
+  - [Contact](#contact)
+  - [Acknowledgements](#acknowledgements)
+
+
 ## About
 
 This project's objective was to build a shooter game similar to York Computer's [tutorial][sg-tutorial]. So I used the main idea but I created my own Star Wars Space Shooter.
@@ -82,11 +99,16 @@ If you manage to destroy his ship don't fool yourself. He will be back, after al
 
 This game is composed by 5 scenes each one with its music:
 
-* Introduction: ![SC-Intro][SC-Intro]
-* Main Menu: ![SC-MM][SC-MM]
-* Game: ![SC-Game][SC-Game]
-* Game Over: ![SC-GO][SC-GO]
-* Leader Board: ![SC-LB][SC-LB]
+* Introduction: 
+![SC-Intro][SC-Intro]
+* Main Menu: 
+![SC-MM][SC-MM]
+* Game: 
+![SC-Game][SC-Game]
+* Game Over: 
+![SC-GO][SC-GO]
+* Leader Board: 
+![SC-LB][SC-LB]
 
 It is important to mention that the Leader Board will only show 20 names.
 
@@ -137,16 +159,16 @@ Follow me on [twitter][rapha-twitter],  visit my [Github portfolio][rapha-github
 [rapha-personal]: https://phalado.github.io/
 
 <!-- Images -->
-[wasd]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/images/wasd.png
-[space]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/images/space-key.png
+[wasd]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/Images/wasd.png
+[space]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/Images/space-key.png
 [X-Wing]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/dist/content/xWing.png
 [Tie-Fighter]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/dist/content/tieFighterp.png
 [Tie-Adv]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/dist/content/tieAdvanced.png
 [Imp-Sh]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/dist/content/imperialShutle.png
 [Bomb]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/dist/content/sprEnemy1.png
 [HP-Bar]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/dist/content/saberComplete.png
-[SC-Intro]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/images/sceneIntro.png
-[SC-MM]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/images/sceneMM.png
-[SC-Game]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/images/sceneGame.png
-[SC-GO]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/images/sceneGO.png
-[SC-LB]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/images/sceneLB.png
+[SC-Intro]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/Images/sceneIntro.png
+[SC-MM]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/Images/sceneMM.png
+[SC-Game]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/Images/sceneGame.png
+[SC-GO]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/Images/sceneGO.png
+[SC-LB]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/Images/sceneLB.png

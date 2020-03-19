@@ -5,7 +5,12 @@ function localStoreScore(score) {
 
 function getLocalScores() {
   const score = localStorage.getItem('scores');
-  return JSON.parse(score);
+  let result = JSON.parse(score);
+  if (result === null) {
+    result = [0, 0];
+    localStoreScore(result);
+  }
+  return result;
 }
 
 function storeScores(score) {
