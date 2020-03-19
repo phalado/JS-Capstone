@@ -27,6 +27,4 @@ describe('Test to add a game, add a score to it and request it back', () => {
       });
     });
   });
-
-  
 });

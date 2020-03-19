@@ -34,7 +34,7 @@ class SceneGameOver extends Phaser.Scene {
       `Score: ${this.scores[0]}`, {
         color: '#d0c600',
         fontFamily: 'sans-serif',
-        fontSize: '3vw',
+        fontSize: '30px',
         lineHeight: 1.3,
         align: 'center',
       },
@@ -49,7 +49,7 @@ class SceneGameOver extends Phaser.Scene {
     this.song.play();
 
     this.btnRestart = this.add.sprite(
-      this.game.config.width * 0.3,
+      this.game.config.width * 0.5,
       this.game.config.height * 0.9,
       'sprBtnRestart',
     );
@@ -63,7 +63,7 @@ class SceneGameOver extends Phaser.Scene {
     }, this);
 
     this.btnRecord = this.add.sprite(
-      this.game.config.width * 0.7,
+      this.game.config.width * 0.85,
       this.game.config.height * 0.9,
       'sprBtnRecord',
     );
@@ -74,6 +74,20 @@ class SceneGameOver extends Phaser.Scene {
       this.btnRecord.setTexture('sprBtnRecord');
       this.song.stop();
       this.scene.start('SceneLeaderBoard');
+    }, this);
+
+    this.btnAbout = this.add.sprite(
+      this.game.config.width * 0.15,
+      this.game.config.height * 0.7,
+      'sprBtnAbout',
+    );
+
+    this.btnAbout.setInteractive();
+    this.createButton(this.btnAbout, 'sprBtnAbout', 'sprBtnAboutHover', 'sprBtnAboutDown');
+    this.btnAbout.on('pointerup', () => {
+      this.btnAbout.setTexture('sprBtnAbout');
+      this.song.stop();
+      this.scene.start('SceneAbout');
     }, this);
 
     this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
@@ -90,8 +104,8 @@ class SceneGameOver extends Phaser.Scene {
 
     const div = document.createElement('div');
     div.innerHTML = `
-      <input type="text" id="nameField" placeholder="Enter your name" style="font-size: 1.5vw"><br>
-      <input type="button" name="submitButton" value="Submit Score" style="font-size: 1.5vw">
+      <input type="text" id="nameField" placeholder="Enter your name" style="font-size: 1.5rem width: ${this.game.config.width * 0.25}"><br>
+      <input type="button" name="submitButton" value="Submit Score" style="font-size: 1.5rem">
     `;
 
     const element = this.add.dom(280, 480, div);

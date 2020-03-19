@@ -2,6 +2,7 @@ import Phaser from './phaser';
 import SceneMainMenu from './scenes/SceneMainMenu';
 import SceneMain from './scenes/SceneMain';
 import SceneIntro from './scenes/SceneIntro';
+import SceneAbout from './scenes/SceneAbout';
 import SceneGameOver from './scenes/SceneGameOver';
 import SceneLeaderBoard from './scenes/SceneLeaderBoard';
 
@@ -23,6 +24,7 @@ const config = {
   scene: [
     SceneIntro,
     SceneMainMenu,
+    SceneAbout,
     SceneMain,
     SceneGameOver,
     SceneLeaderBoard,

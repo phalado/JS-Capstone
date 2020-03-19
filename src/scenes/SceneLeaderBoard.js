@@ -11,14 +11,6 @@ class SceneLeaderBoard extends Phaser.Scene {
     this.load.audio('victoryTheme', 'content/swVictoryTheme.mp3');
     this.load.image('leaderBoardTitle', 'content/leaderBoard.png');
 
-    this.load.image('sprBtnRestart', 'content/sprBtnRestart.png');
-    this.load.image('sprBtnRestartHover', 'content/sprBtnRestartHover.png');
-    this.load.image('sprBtnRestartDown', 'content/sprBtnRestartDown.png');
-    this.load.image('gameTitle', 'content/gameTitle2.png');
-
-    this.load.audio('sndBtnOver', 'content/sndBtnOver.wav');
-    this.load.audio('sndBtnDown', 'content/sndBtnDown.wav');
-
     this.load.scenePlugin({
       key: 'rexuiplugin',
       url: 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js',
@@ -42,7 +34,7 @@ class SceneLeaderBoard extends Phaser.Scene {
     this.song.play();
 
     this.btnRestart = this.add.sprite(
-      this.game.config.width * 0.5,
+      this.game.config.width * 0.3,
       this.game.config.height * 0.9,
       'sprBtnRestart',
     );
@@ -53,6 +45,20 @@ class SceneLeaderBoard extends Phaser.Scene {
       this.btnRestart.setTexture('sprBtnRestart');
       this.song.stop();
       this.scene.start('SceneMain');
+    }, this);
+
+    this.btnAbout = this.add.sprite(
+      this.game.config.width * 0.7,
+      this.game.config.height * 0.9,
+      'sprBtnAbout',
+    );
+
+    this.btnAbout.setInteractive();
+    this.createButton(this.btnAbout, 'sprBtnAbout', 'sprBtnAboutHover', 'sprBtnAboutDown');
+    this.btnAbout.on('pointerup', () => {
+      this.btnAbout.setTexture('sprBtnAbout');
+      this.song.stop();
+      this.scene.start('SceneAbout');
     }, this);
 
     this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);

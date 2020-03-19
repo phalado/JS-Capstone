@@ -36,7 +36,7 @@ Repository: https://github.com/phalado/JS-Capstone
 
 ## The game
 
-This is a simple endless runner. Enemies appear at the top of the canvas Some shoot you, some pass straight, some pursue you. You control Luke Skywalker's X-Wing with the keys **w**, **a**, **s** and **d** while you shoot with **space**. Just destroy as many enemies as you can before your HP runs out and you die. 
+This is a simple endless runner. Enemies appear at the top of the canvas Some shoot you, some pass straight, some pursue you. You control Luke Skywalker's X-Wing with **keyboard arrows** while you shoot with **space**. Just destroy as many enemies as you can before your HP runs out and you die. 
 
 In the end, you can add your name to our Leader Board and check the high scores.
 
@@ -45,7 +45,7 @@ In the end, you can add your name to our Leader Board and check the high scores.
 
 First the most important: how to play.
 
-The commands were explained in the previous section ![wasd][wasd] to move ![space][space] to shoot.
+The commands were explained in the previous section **![wasd][wasd]** to move ![space][space] to shoot.
 
 
 You can play the game online clicking [here][live-version] or locally following these steps:
@@ -172,7 +172,7 @@ Follow me on [twitter][rapha-twitter],  visit my [Github portfolio][rapha-github
 
 <!-- Images -->
 [logo]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/dist/content/gameTitle2.png
-[wasd]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/Images/wasd.png
+[wasd]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/Images/arrow.jpg
 [space]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/Images/space-key.png
 [X-Wing]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/dist/content/xWing.png
 [Tie-Fighter]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/dist/content/tieFighterp.png
