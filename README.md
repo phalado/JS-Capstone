@@ -148,6 +148,12 @@ To create this game I used:
 * [Leaderboard API service][LB-API] for the leaderboard
 
 
+## Video presentation
+
+
+https://www.loom.com/share/50085eb2e29b42129edaa0ce6d59d191
+  
+
 ## Contact
 
 Author: Raphael Cordeiro
@@ -190,3 +196,6 @@ Follow me on [twitter][rapha-twitter],  visit my [Github portfolio][rapha-github
 [SC-AB]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/Images/sceneAB.png
 [SC-GO]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/Images/sceneGO.png
 [SC-LB]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/Images/sceneLB.png
+
+<!-- Video -->
+[video]: https://www.loom.com/share/50085eb2e29b42129edaa0ce6d59d191
