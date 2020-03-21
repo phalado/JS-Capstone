@@ -58,7 +58,6 @@ class SceneLeaderBoard extends Phaser.Scene {
     this.btnAbout.on('pointerup', () => {
       this.btnAbout.setTexture('sprBtnAbout');
       this.song.stop();
-      console.log('Record - About');
       this.scene.start('SceneAbout');
     }, this);
 
