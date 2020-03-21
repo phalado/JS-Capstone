@@ -1,4 +1,4 @@
-import Phaser from '../phaser';
+import Phaser from 'phaser';
 import ScrollingBackground from '../entities/entityScrollingBackground';
 import { getLocalScores } from '../localStorage';
 import { submitHighScore } from '../leaderboardCall';

@@ -1,4 +1,4 @@
-import Phaser from '../phaser';
+import Phaser from 'phaser';
 import ScrollingBackground from '../entities/entityScrollingBackground';
 import { getLocalScores } from '../localStorage';
 
@@ -28,6 +28,8 @@ class SceneMainMenu extends Phaser.Scene {
     this.load.image('sprBtnAboutDown', 'content/sprBtnAboutDown.png');
 
     this.load.image('gameTitle', 'content/gameTitle2.png');
+    this.load.image('arrowKeys', 'content/arrows.png');
+    this.load.image('spaceKey', 'content/space-key.png');
 
     this.load.audio('sndBtnOver', 'content/sndBtnOver.wav');
     this.load.audio('sndBtnDown', 'content/sndBtnDown.wav');
@@ -47,8 +49,8 @@ class SceneMainMenu extends Phaser.Scene {
     );
 
     this.btnPlay = this.add.sprite(
-      this.game.config.width * 0.5,
-      this.game.config.height * 0.7,
+      this.game.config.width * 0.25,
+      this.game.config.height * 0.65,
       'sprBtnPlay',
     );
 
@@ -61,8 +63,8 @@ class SceneMainMenu extends Phaser.Scene {
     }, this);
 
     this.btnRecord = this.add.sprite(
-      this.game.config.width * 0.85,
-      this.game.config.height * 0.7,
+      this.game.config.width * 0.25,
+      this.game.config.height * 0.75,
       'sprBtnRecord',
     );
 
@@ -75,8 +77,8 @@ class SceneMainMenu extends Phaser.Scene {
     }, this);
 
     this.btnAbout = this.add.sprite(
-      this.game.config.width * 0.15,
-      this.game.config.height * 0.7,
+      this.game.config.width * 0.25,
+      this.game.config.height * 0.55,
       'sprBtnAbout',
     );
 
@@ -87,6 +89,51 @@ class SceneMainMenu extends Phaser.Scene {
       this.song.stop();
       this.scene.start('SceneAbout');
     }, this);
+
+    this.textConfig = {
+      color: '#d0c600',
+      fontFamily: 'sans-serif',
+      fontSize: '20px',
+      lineHeight: 1.3,
+      align: 'justify',
+      wordWrap: {
+        width: this.game.config.width * 0.8,
+        useAdvancedWrap: true,
+      },
+    };
+
+    this.add.text(
+      this.game.config.width * 0.6,
+      this.game.config.height * 0.55,
+      'Controls:',
+      this.textConfig,
+    );
+
+    this.arrowKeys = this.add.image(
+      this.game.config.width * 0.65,
+      this.game.config.height * 0.65,
+      'arrowKeys',
+    );
+
+    this.add.text(
+      this.game.config.width * 0.8,
+      this.game.config.height * 0.65,
+      'Move.',
+      this.textConfig,
+    );
+
+    this.spaceKey = this.add.image(
+      this.game.config.width * 0.65,
+      this.game.config.height * 0.75,
+      'spaceKey',
+    );
+
+    this.add.text(
+      this.game.config.width * 0.8,
+      this.game.config.height * 0.73,
+      'Shoot.',
+      this.textConfig,
+    );
 
     this.scores = getLocalScores();
 

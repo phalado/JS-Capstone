@@ -1,4 +1,5 @@
-import Phaser from '../phaser';
+import Phaser from 'phaser';
+
 import ScrollingBackground from '../entities/entityScrollingBackground';
 
 class SceneAbout extends Phaser.Scene {
@@ -59,6 +60,7 @@ class SceneAbout extends Phaser.Scene {
     this.btnRecord.on('pointerup', () => {
       this.btnRecord.setTexture('sprBtnRecord');
       this.song.stop();
+      console.log('About - Record');
       this.scene.start('SceneLeaderBoard');
     }, this);
 
@@ -172,10 +174,6 @@ class SceneAbout extends Phaser.Scene {
   }
 
   update() {
-    for (let i = 0; i < this.backgrounds.length; i += 1) {
-      this.backgrounds[i].update();
-    }
-
     if (this.keySpace.isDown) {
       this.song.stop();
       this.scene.start('SceneMain');

@@ -59,7 +59,8 @@
     "webpack-cli": "^3.3.11"
   },
   "dependencies": {
+    "express": "^4.17.1",
     "phaser": "^3.22.0",
-    "express": "^4.17.1"
+    "phaser3-project-template": "^1.0.9"
   }
 }

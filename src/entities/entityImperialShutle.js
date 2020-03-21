@@ -1,5 +1,5 @@
+import Phaser from 'phaser';
 import Entity from './Entities';
-import Phaser from '../phaser';
 
 class ImperialShutle extends Entity {
   constructor(scene, x, y) {

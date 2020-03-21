@@ -1,4 +1,4 @@
-import Phaser from '../phaser';
+import Phaser from 'phaser';
 
 class Entity extends Phaser.GameObjects.Sprite {
   constructor(scene, x, y, key, type) {

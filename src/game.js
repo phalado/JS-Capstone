@@ -1,4 +1,4 @@
-import Phaser from './phaser';
+import Phaser from 'phaser';
 import SceneMainMenu from './scenes/SceneMainMenu';
 import SceneMain from './scenes/SceneMain';
 import SceneIntro from './scenes/SceneIntro';

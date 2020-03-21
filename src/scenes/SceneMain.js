@@ -1,4 +1,4 @@
-import Phaser from '../phaser';
+import Phaser from 'phaser';
 import Player from '../entities/entityPlayer';
 import ScrollingBackground from '../entities/entityScrollingBackground';
 import ImperialShutle from '../entities/entityImperialShutle';

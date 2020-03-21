@@ -19,6 +19,11 @@ In this project, I build a shooter game using JavaScript's framework [Phaser 3][
       - [Enemies](#enemies)
       - [Scenes](#scenes)
   - [Technologies used](#technologies-used)
+  - [Video presentation](#video-presentation)
+  - [Learning Objectives](#learning-objectives)
+    - [Transversal](#transversal)
+    - [Soft skills](#soft-skills)
+    - [Technical](#technical)
   - [Contact](#contact)
   - [Acknowledgements](#acknowledgements)
 
@@ -152,7 +157,41 @@ To create this game I used:
 
 
 https://www.loom.com/share/50085eb2e29b42129edaa0ce6d59d191
-  
+
+
+
+## Learning Objectives
+
+
+### Transversal
+
+* Use linters (code standards) ![mast][mast]
+* Maintain professional Github repos ![mast][mast]
+* Deploy apps (Heroku, Netlify) ![mast][mast]
+
+
+### Soft skills
+
+* Strong English written communication ![mast][mast]
+* Ability to communicate information effectively to non-technical people ![mast][mast]
+* Ability to translate business requirements into software solutions ![mast][mast]
+* Sets high standards of performance to oneself ![mast][mast]
+* Shows a desire to take personal responsibility to complete tasks and solve problems ![mast][mast]
+* Ability to multitask and effectively manage time and prioritzation ![mast][mast]
+
+
+### Technical
+
+* Create effective JavaScript code that solves the problem ![mast][mast]
+* Encapsulate JS code in modules ![mast][mast]
+* Use Webpack ![mast][mast]
+* Use EcmaScript+ ![mast][mast]
+* Deal with async code ![mast][mast]
+* Send and receive data from a back-end endpoint ![mast][mast]
+* Use JSON format ![mast][mast]
+* Use DOM (read/write data) listen to events ![mast][mast]
+* Test JS code ![mast][mast]
+
 
 ## Contact
 
@@ -181,21 +220,22 @@ Follow me on [twitter][rapha-twitter],  visit my [Github portfolio][rapha-github
 [rapha-personal]: https://phalado.github.io/
 
 <!-- Images -->
-[logo]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/dist/content/gameTitle2.png
-[wasd]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/Images/arrow.jpg
-[space]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/Images/space-key.png
-[X-Wing]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/dist/content/xWing.png
-[Tie-Fighter]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/dist/content/tieFighterp.png
-[Tie-Adv]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/dist/content/tieAdvanced.png
-[Imp-Sh]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/dist/content/imperialShutle.png
-[Bomb]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/dist/content/sprEnemy1.png
-[HP-Bar]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/dist/content/saberComplete.png
-[SC-Intro]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/Images/sceneIntro.png
-[SC-MM]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/Images/sceneMM.png
-[SC-Game]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/Images/sceneGame.png
-[SC-AB]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/Images/sceneAB.png
-[SC-GO]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/Images/sceneGO.png
-[SC-LB]: https://raw.githubusercontent.com/phalado/JS-Capstone/shooter/Images/sceneLB.png
+[logo]: https://raw.githubusercontent.com/phalado/JS-Capstone/development/dist/content/gameTitle2.png
+[wasd]: https://raw.githubusercontent.com/phalado/JS-Capstone/development/Images/arrow.jpg
+[space]: https://raw.githubusercontent.com/phalado/JS-Capstone/development/Images/space-key.png
+[X-Wing]: https://raw.githubusercontent.com/phalado/JS-Capstone/development/dist/content/xWing.png
+[Tie-Fighter]: https://raw.githubusercontent.com/phalado/JS-Capstone/development/dist/content/tieFighterp.png
+[Tie-Adv]: https://raw.githubusercontent.com/phalado/JS-Capstone/development/dist/content/tieAdvanced.png
+[Imp-Sh]: https://raw.githubusercontent.com/phalado/JS-Capstone/development/dist/content/imperialShutle.png
+[Bomb]: https://raw.githubusercontent.com/phalado/JS-Capstone/development/dist/content/sprEnemy1.png
+[HP-Bar]: https://raw.githubusercontent.com/phalado/JS-Capstone/development/dist/content/saberComplete.png
+[SC-Intro]: https://raw.githubusercontent.com/phalado/JS-Capstone/development/Images/sceneIntro.png
+[SC-MM]: https://raw.githubusercontent.com/phalado/JS-Capstone/development/Images/sceneMM.png
+[SC-Game]: https://raw.githubusercontent.com/phalado/JS-Capstone/development/Images/sceneGame.png
+[SC-AB]: https://raw.githubusercontent.com/phalado/JS-Capstone/development/Images/sceneAB.png
+[SC-GO]: https://raw.githubusercontent.com/phalado/JS-Capstone/development/Images/sceneGO.png
+[SC-LB]: https://raw.githubusercontent.com/phalado/JS-Capstone/development/Images/sceneLB.png
+[mast]: https://raw.githubusercontent.com/phalado/JS-Capstone/development/Images/masteryBadge.png
 
 <!-- Video -->
 [video]: https://www.loom.com/share/50085eb2e29b42129edaa0ce6d59d191

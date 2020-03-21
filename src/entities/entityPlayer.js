@@ -1,5 +1,5 @@
+import Phaser from 'phaser';
 import Entity from './Entities';
-import Phaser from '../phaser';
 import PlayerLaser from './entityPlayerLaser';
 import { storeScores } from '../localStorage';
 
