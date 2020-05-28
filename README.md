@@ -20,6 +20,7 @@ In this project, I build a shooter game using JavaScript's framework [Phaser 3][
       - [Scenes](#scenes)
   - [Technologies used](#technologies-used)
   - [Video presentation](#video-presentation)
+  - [Future work](#future-work)
   - [Learning Objectives](#learning-objectives)
     - [Transversal](#transversal)
     - [Soft skills](#soft-skills)
@@ -157,6 +158,13 @@ To create this game I used:
 
 
 https://www.loom.com/share/50085eb2e29b42129edaa0ce6d59d191
+
+
+## Future Work
+
+* Mobile version
+* Possibility to play with Milenium Falcon
+* Stage mode
 
 
 
